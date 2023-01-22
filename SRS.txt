@@ -1,0 +1,3 @@
+Models:
+ Category [CRUD] -> name slug
+ Stories [CRUD] -> category_id content media
