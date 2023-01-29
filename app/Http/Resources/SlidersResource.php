@@ -4,7 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class StoryResource extends JsonResource
+class SlidersResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -16,8 +16,7 @@ class StoryResource extends JsonResource
     {
         return [
             'content' => $this->content,
-            'media' => $this->getFirstMediaUrl(),
-            'sliders' => $this->load('sliders')
+            'media' => $this->getFirstMediaUrl()
         ];
     }
 }

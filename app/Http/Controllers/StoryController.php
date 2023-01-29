@@ -16,9 +16,9 @@ class StoryController extends Controller
      */
     public function index()
     {
-        $data = Story::find(1);
-        $media = $data->getFirstMediaUrl();
-        return $media;
+        $data = Story::latest()->with(['media','sliders.media'])->get();
+         
+        return $data;
 
     }
 
