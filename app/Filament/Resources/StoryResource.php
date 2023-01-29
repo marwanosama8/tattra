@@ -18,7 +18,8 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Filament\Forms\Components\Fieldset;
 use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
-
+use Filament\Forms\Components\Repeater;
+use Filament\Forms\Components\TextInput;
 class StoryResource extends Resource
 {
     protected static ?string $model = Story::class;
@@ -40,14 +41,21 @@ class StoryResource extends Resource
                     ]),
                 Fieldset::make('Story')
                     ->schema([
-                        SpatieMediaLibraryFileUpload::make('story')
-                        ->required()
-                        ])->columns(1),
-                Fieldset::make('Content')
-                    ->schema([
+                        TextInput::make('title')->label('Story Head Title')->required(),
+                        SpatieMediaLibraryFileUpload::make('story')->label('Story Head Media'),
                         RichEditor::make('content')
                             ->required()
-                    ])->columns(1)
+                    ])->columns(1),
+                Fieldset::make('Sliders')
+                    ->schema([
+                        Repeater::make('members')
+                        ->relationship('sliders')
+                            ->schema([
+                                SpatieMediaLibraryFileUpload::make('Slider')->label('Story Head Media'),
+                                RichEditor::make('content')->required(),
+                            ])
+                    ])->columns(1),
+
             ]);
     }
 

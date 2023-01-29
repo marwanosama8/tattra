@@ -16,7 +16,7 @@ class StoryController extends Controller
      */
     public function index()
     {
-        return StoryResource::collection(Story::all());
+        return Story::all()->load('sliders');
 
     }
 
