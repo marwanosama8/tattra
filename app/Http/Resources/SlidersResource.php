@@ -16,7 +16,7 @@ class SlidersResource extends JsonResource
     {
         return [
             'content' => $this->content,
-            'media' => $this->getMedia()[0],
+            'media' => $this->getMedia(),
         ];
     }
 }
