@@ -17,7 +17,9 @@ class StoryFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'category_id' => 1,
+            'title' => $this->faker->sentence($nbWords = 6, $variableNbWords = true),
+            'content' => $this->faker->paragraph($nbSentences = 5, $variableNbSentences = true) 
         ];
     }
 }

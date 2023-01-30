@@ -21,14 +21,14 @@ class StoryResource extends JsonResource
                 'category_id' => $this->category->name,
                 'title' => $this->title,
                 'content' => $this->content,
-                'media' => $this->getFirstMediaUrl(),
+                'media' => $this->getMedia()[0],
             ];
         } elseif ($request->is('api/get-story')) {
             return [
                 'id' => $this->id,
                 'title' => $this->title,
                 'content' => $this->content,
-                'media' => $this->getFirstMediaUrl(),
+                'media' => $this->getMedia(),
                 'sliders' => SlidersResource::collection($this->sliders)
             ];
         }

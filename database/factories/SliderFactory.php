@@ -17,7 +17,7 @@ class SliderFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'content' => $this->faker->paragraph($nbSentences = 5, $variableNbSentences = true) 
         ];
     }
 }

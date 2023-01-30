@@ -12,7 +12,7 @@ class Story extends Model implements HasMedia
     use HasFactory, InteractsWithMedia;
 
 
-    protected $fillable = ['category_id','content','title'];
+    protected $fillable = ['category_id', 'content', 'title'];
 
     /**
      * Get the category that owns the Story
@@ -33,4 +33,3 @@ class Story extends Model implements HasMedia
         return $this->hasMany(Slider::class);
     }
 }
-

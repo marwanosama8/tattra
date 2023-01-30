@@ -54,7 +54,7 @@ class StoryResource extends Resource
                         Repeater::make('members')
                         ->relationship('sliders')
                             ->schema([
-                                SpatieMediaLibraryFileUpload::make('Slider')->label('Slider Media'),
+                                SpatieMediaLibraryFileUpload::make('Slider')->label('Slider Media')->multiple(),
                                 Textarea::make('content')->required(),
                             ])
                     ])->columns(1),

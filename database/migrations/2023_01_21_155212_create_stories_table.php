@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('category_id');
             $table->string('title');
-            $table->string('content');
+            $table->longText('content');
             $table->timestamps();
         });
     }
