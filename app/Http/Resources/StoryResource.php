@@ -26,6 +26,7 @@ class StoryResource extends JsonResource
         } elseif ($request->is('api/get-story')) {
             return [
                 'id' => $this->id,
+                'category_id' => $this->category->name,
                 'title' => $this->title,
                 'content' => $this->content,
                 'media' => $this->getMedia()[0],
