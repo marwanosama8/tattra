@@ -28,7 +28,7 @@ class StoryResource extends JsonResource
                 'id' => $this->id,
                 'title' => $this->title,
                 'content' => $this->content,
-                'media' => $this->getMedia(),
+                'media' => $this->getMedia()[0],
                 'sliders' => SlidersResource::collection($this->sliders)
             ];
         }
