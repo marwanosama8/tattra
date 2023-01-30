@@ -3,12 +3,14 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
+use App\Models\Category;
 use Faker\Factory as Faker;
 
 use App\Models\Slider;
 use App\Models\Story;
 use Illuminate\Database\Seeder;
-
+use Str;
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -18,6 +20,11 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        $category = Category::create([
+            'name' => 'Dessert',
+            'slug' => Str::slug('Dessert'),
+            
+        ]);
         $story = Story::factory()->count(3)
             ->has(Slider::factory()->count(10))
             ->create();
