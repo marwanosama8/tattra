@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use App\Models\Category;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class StoryResource extends JsonResource
@@ -14,10 +15,22 @@ class StoryResource extends JsonResource
      */
     public function toArray($request)
     {
-        return [
-            'content' => $this->content,
-            'media' => $this->getFirstMediaUrl(),
-            'sliders' => $this->load('sliders')
-        ];
+        if ($request->is('api/get-all-stories')) {
+            return [
+                'id' => $this->id,
+                'category_id' => $this->category->name,
+                'title' => $this->title,
+                'content' => $this->content,
+                'media' => $this->getFirstMediaUrl(),
+            ];
+        } elseif ($request->is('api/get-story')) {
+            return [
+                'id' => $this->id,
+                'title' => $this->title,
+                'content' => $this->content,
+                'media' => $this->getFirstMediaUrl(),
+                'sliders' => SlidersResource::collection($this->sliders)
+            ];
+        }
     }
 }

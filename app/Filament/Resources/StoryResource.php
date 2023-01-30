@@ -20,6 +20,9 @@ use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
 use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\Textarea;
+
+
 class StoryResource extends Resource
 {
     protected static ?string $model = Story::class;
@@ -43,7 +46,7 @@ class StoryResource extends Resource
                     ->schema([
                         TextInput::make('title')->label('Story Head Title')->required(),
                         SpatieMediaLibraryFileUpload::make('story')->label('Story Head Media'),
-                        RichEditor::make('content')
+                        Textarea::make('content')
                             ->required()
                     ])->columns(1),
                 Fieldset::make('Sliders')
@@ -51,8 +54,8 @@ class StoryResource extends Resource
                         Repeater::make('members')
                         ->relationship('sliders')
                             ->schema([
-                                SpatieMediaLibraryFileUpload::make('Slider')->label('Story Head Media'),
-                                RichEditor::make('content')->required(),
+                                SpatieMediaLibraryFileUpload::make('Slider')->label('Slider Media'),
+                                Textarea::make('content')->required(),
                             ])
                     ])->columns(1),
 
