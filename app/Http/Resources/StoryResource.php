@@ -21,7 +21,7 @@ class StoryResource extends JsonResource
                 'category_id' => $this->category->name,
                 'title' => $this->title,
                 'content' => $this->content,
-                'media' => $this->getMedia()[0],
+                'media' => $this->getFirstMediaUrl(),
             ];
         } elseif ($request->is('api/get-story')) {
             return [
@@ -29,7 +29,7 @@ class StoryResource extends JsonResource
                 'category_id' => $this->category->name,
                 'title' => $this->title,
                 'content' => $this->content,
-                'media' => $this->getMedia()[0],
+                'media' => $this->getFirstMediaUrl(),
                 'sliders' => SlidersResource::collection($this->sliders)
             ];
         }

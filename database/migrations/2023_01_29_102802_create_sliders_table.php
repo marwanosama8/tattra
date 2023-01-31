@@ -16,7 +16,8 @@ return new class extends Migration
         Schema::create('sliders', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('story_id');
-            $table->longText('content');
+            $table->longText('content')->nullable();
+            $table->string('see_more')->nullable();
             $table->timestamps();
         });
     }

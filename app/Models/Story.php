@@ -11,7 +11,6 @@ class Story extends Model implements HasMedia
 {
     use HasFactory, InteractsWithMedia;
 
-
     protected $fillable = ['category_id', 'content', 'title'];
 
     /**

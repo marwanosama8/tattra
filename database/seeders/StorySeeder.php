@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class StorySeeder extends Seeder
 {
@@ -14,6 +15,7 @@ class StorySeeder extends Seeder
      */
     public function run()
     {
-        //
+         DB::table('stories')->delete();
+        
     }
 }

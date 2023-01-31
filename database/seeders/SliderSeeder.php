@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class SliderSeeder extends Seeder
 {
@@ -14,6 +15,6 @@ class SliderSeeder extends Seeder
      */
     public function run()
     {
-        //
+        DB::table('sliders')->delete();
     }
 }

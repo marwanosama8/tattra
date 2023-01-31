@@ -56,6 +56,7 @@ class StoryResource extends Resource
                             ->schema([
                                 SpatieMediaLibraryFileUpload::make('Slider')->label('Slider Media')->multiple(),
                                 Textarea::make('content')->required(),
+                                TextInput::make('see_more'),
                             ])
                     ])->columns(1),
 
@@ -68,6 +69,7 @@ class StoryResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('category.name'),
                 Tables\Columns\TextColumn::make('content'),
+                Tables\Columns\TextColumn::make('title'),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime(),
                 Tables\Columns\TextColumn::make('updated_at')
