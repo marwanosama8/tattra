@@ -14,10 +14,18 @@ class SlidersResource extends JsonResource
      */
     public function toArray($request)
     {
-        return [
-            'content' => $this->content,
-            'see_more' => $this->see_more,
-            'media' => $this->getFirstMediaUrl(),
-        ];
+        if ($this->is_ad) {
+            return [
+                'id_ad' => $this->is_ad,
+                'content' => $this->content,
+            ];
+        } else {
+            return [
+                'id_ad' => $this->is_ad,
+                'content' => $this->content,
+                'see_more' => $this->see_more,
+                'media' => $this->getFirstMediaUrl(),
+            ];
+        }
     }
 }

@@ -21,6 +21,8 @@ use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
 use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
+use Filament\Forms\Components\Toggle;
+use Closure;
 
 
 class StoryResource extends Resource
@@ -52,11 +54,20 @@ class StoryResource extends Resource
                 Fieldset::make('Sliders')
                     ->schema([
                         Repeater::make('members')
-                        ->relationship('sliders')
+                            ->relationship('sliders')
                             ->schema([
-                                SpatieMediaLibraryFileUpload::make('Slider')->label('Slider Media')->multiple(),
-                                Textarea::make('content')->required(),
-                                TextInput::make('see_more'),
+                                Toggle::make('is_ad')
+                                    ->label('Is It Advertisement?')
+                                    ->reactive(),
+                                SpatieMediaLibraryFileUpload::make('Slider')->label('Slider Media')
+                                    ->hidden(fn (Closure $get) => $get('is_ad') == true),
+                                Textarea::make('content')->label(function (Closure $get) {
+                                    $is_admin = $get('is_ad');
+                                    $new = $is_admin ? 'Advertisement Element' : 'Content';
+                                    return  $new;
+                                })->required(),
+                                TextInput::make('see_more')
+                                    ->hidden(fn (Closure $get) => $get('is_ad') == true),
                             ])
                     ])->columns(1),
 
